@@ -8,6 +8,10 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+/.idea/dbnavigator.xml
+/.idea/google-java-format.xml
+/.idea/git_toolbox_prj.xml
+/.idea/checkstyle-idea.xml
 *.iws
 *.iml
 *.ipr
@@ -37,4 +41,3 @@ build/
 ### Mac OS ###
 .DS_Store
 /src/main/resources/app/appiumChallenge.apk.idsig
-/.idea/dbnavigator.xml
