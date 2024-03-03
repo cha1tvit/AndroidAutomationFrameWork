@@ -22,7 +22,7 @@ public class LoginPage extends BasePage {
         setPassword(password);
     }
 
-    @Given("Click button 'LOG IN'")
+    @Given("Click button login")
     public void clickButtonLoginToApp() {
         WebElement el = getDriver().findElement(LoginLocators.logInButton);
         el.click();
@@ -40,7 +40,7 @@ public class LoginPage extends BasePage {
         webDriverHelper.awaitUntilElementBecomeVisible(getDriver(), LoginLocators.message);
     }
 
-    @When("Verify presence block 'Login Form' by condition {string}")
+    @When("Verify presence block login form by condition {boolean}")
     public void verifyPresenceLoginForm(boolean isLoginFormAvailable) {
         assertEquals(isLoginFormAvailable, webDriverHelper.isElementVisible(getDriver(), LoginLocators.logInButton),
                 "Availability block 'Login Form' is not as expected");
