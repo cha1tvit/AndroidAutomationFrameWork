@@ -1,20 +1,46 @@
 package tests;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import io.cucumber.junit.platform.engine.Cucumber;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import pages.LoginPage;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+import steps.LoginPage;
+import steps.SampleListPage;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty"}, features = "src/test/resources/features")
+@Cucumber
+@Suite
+@SelectClasspathResource("tests")
 public class LoginTest extends BaseTest{
 
     LoginPage loginPage = new LoginPage(androidDriver);
+    SampleListPage sampleListPage = new SampleListPage(androidDriver);
 
     @Test
-    public void login()
+    public void loginFormNavigationTest()
     {
-        loginPage.loginToApp();
+        loginPage.clickButtonLoginToApp();
+        loginPage.verifyPresenceLoginForm(false);
+        loginPage.clickButtonBack();
+        loginPage.verifyPresenceLoginForm(true);
+    }
+
+    @Test
+    public void successfulLoginTest()
+    {
+        loginPage.verifyPresenceLoginForm(true);
+        loginPage.setUserName("admin");
+        loginPage.setPassword("admin");
+        loginPage.clickButtonLoginToApp();
+        sampleListPage.waitForPageLoaded();
+    }
+
+    @Test
+    public void unSuccessfulLoginTest()
+    {
+        loginPage.verifyPresenceLoginForm(true);
+        loginPage.setUserCredentials("admin", "wrongPassword");
+        loginPage.clickButtonLoginToApp();
+        loginPage.waitForMessageDialogPresent();
+        loginPage.verifyErrorMessagePresence(true);
     }
 }

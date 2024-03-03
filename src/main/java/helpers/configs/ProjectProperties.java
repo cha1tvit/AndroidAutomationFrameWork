@@ -3,7 +3,7 @@ package helpers.configs;
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
-@Config.Sources({"system:properties", "classpath:project.properties"})
+@Config.Sources(value="file:${user.dir}/src/main/resources/config/project.properties")
 public interface ProjectProperties extends Config {
 
     @Config.Key("app.apk.local.path")

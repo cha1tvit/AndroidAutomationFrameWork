@@ -38,13 +38,6 @@
             <artifactId>cucumber-junit-platform-engine</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
@@ -91,7 +84,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <version>1.10.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
